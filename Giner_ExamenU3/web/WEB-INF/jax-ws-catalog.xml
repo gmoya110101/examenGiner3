@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/C:/Users/alanv/OneDrive/Escritorio/ITO/semstre%20actual/Arquitectura%20de%20software/ExamenU3/servicios/obtenerHistorial.wsdl" uri="src/conf/xml-resources/web-services/obtenerHistorial/wsdl/obtenerHistorial.wsdl"/>
+    <system systemId="file:/C:/Users/alanv/OneDrive/Escritorio/ITO/semstre%20actual/Arquitectura%20de%20software/ExamenU3/servicios/Paciente.wsdl" uri="src/conf/xml-resources/web-services/Paciente/wsdl/Paciente.wsdl"/>
+    <system systemId="file:/C:/Users/alanv/OneDrive/Escritorio/ITO/semstre%20actual/Arquitectura%20de%20software/ExamenU3/servicios/paciente.wsdl" uri="src/conf/xml-resources/web-services/paciente/wsdl/paciente.wsdl"/>
+    <system systemId="file:/C:/Users/alanv/OneDrive/Escritorio/ITO/semstre%20actual/Arquitectura%20de%20software/ExamenU3/servicios/obteneristorialClinico.wsdl" uri="src/conf/xml-resources/web-services/obtenerHistorialClinico/wsdl/obteneristorialClinico.wsdl"/>
+    <system systemId="file:/C:/Users/alanv/OneDrive/Escritorio/ITO/semstre%20actual/Arquitectura%20de%20software/ExamenU3/servicios/obtenerdatospaciente.wsdl" uri="src/conf/xml-resources/web-services/historialClinico/wsdl/obtenerdatospaciente.wsdl"/>
+    <system systemId="http://localhost:8080/Giner_ExamenU3/paciente?WSDL" uri="wsdl/localhost_8080/Giner_ExamenU3/paciente.wsdl"/>
+    <system systemId="http://localhost:8080/Giner_ExamenU3/paciente?xsd=1" uri="wsdl/localhost_8080/Giner_ExamenU3/paciente.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/Giner_ExamenU3/historialClinico?WSDL" uri="wsdl/localhost_8080/Giner_ExamenU3/historialClinico.wsdl"/>
+</catalog>

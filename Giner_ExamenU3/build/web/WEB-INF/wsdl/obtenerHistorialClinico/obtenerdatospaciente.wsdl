@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+    name="obtenerdatospaciente"
+    targetNamespace="http://www.itorizaba.com/obtenerdatospaciente.wsdl"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:tns="http://www.itorizaba.com/obtenerdatospaciente.wsdl"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsd1="http://www.itorizaba.com/obtenerdatospaciente.xsd1">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Created using Cape Clear Studio SOA Editor - http://www.capeclear.com</wsdl:documentation>
+    <wsdl:types>
+        <xsd:schema
+            targetNamespace="http://www.itorizaba.com/obtenerdatospaciente.xsd1"
+            xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd1="http://www.itorizaba.com/obtenerdatospaciente.xsd1">
+            <xsd:complexType name="Visita">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="fechaConsulta" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="observaciones" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ArregloVisita">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="1" name="item" type="xsd1:Visita"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="historialClinico">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="medico" type="xsd:string"/>
+                    <xsd:element
+                        maxOccurs="1"
+                        minOccurs="1"
+                        name="areaEspecialidad"
+                        type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="consultorio" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="piso" type="xsd:string"/>
+                    <xsd:element
+                        maxOccurs="1"
+                        minOccurs="1"
+                        name="Visita"
+                        type="xsd1:ArregloVisita"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="paciente">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="nombre" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="apellido" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="direccion" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="telefono" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="rfc" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="curp" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="ciudad" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="numExpediente" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ArregloPaciente">
+                <xsd:sequence>
+                    <xsd:element
+                        maxOccurs="unbounded"
+                        minOccurs="1"
+                        name="item2"
+                        type="xsd1:paciente"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="obtenerdatospacienteMessageResponse">
+        <wsdl:part name="respuesta" type="xsd1:ArregloPaciente"/>
+    </wsdl:message>
+    <wsdl:message name="obtenerdatospacienteMessageRequest">
+        <wsdl:part name="ciudad" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:portType name="obtenerdatospacientePortType">
+        <wsdl:operation name="obtenerdatospaciente">
+            <wsdl:input message="tns:obtenerdatospacienteMessageRequest"/>
+            <wsdl:output message="tns:obtenerdatospacienteMessageResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding
+        name="obtenerdatospacienteBinding"
+        type="tns:obtenerdatospacientePortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="obtenerdatospaciente">
+            <soap:operation
+                soapAction="capeconnect:obtenerdatospaciente:obtenerdatospacientePortType#obtenerdatospaciente"/>
+            <wsdl:input>
+                <soap:body  use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body  use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="obtenerdatospaciente">
+        <wsdl:port
+            binding="tns:obtenerdatospacienteBinding"
+            name="obtenerdatospacientePort">
+            <soap:address location="http://localhost:8000/ccx/obtenerdatospaciente"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

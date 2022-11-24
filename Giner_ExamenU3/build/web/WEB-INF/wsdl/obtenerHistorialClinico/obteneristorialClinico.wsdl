@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+    name="obteneristorialClinico"
+    targetNamespace="http://itorizaba.com/obteneristorialClinico.wsdl"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:tns="http://itorizaba.com/obteneristorialClinico.wsdl"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsd1="http://itorizaba.com/obteneristorialClinico.xsd1">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Created using Cape Clear Studio SOA Editor - http://www.capeclear.com</wsdl:documentation>
+    <wsdl:types>
+        <xsd:schema
+            targetNamespace="http://itorizaba.com/obteneristorialClinico.xsd1"
+            xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd1="http://itorizaba.com/obteneristorialClinico.xsd1">
+            <xsd:complexType name="Paciente">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="numExpediente" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="nombre" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="apellido" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="arregloPaciente">
+                <xsd:sequence>
+                    <xsd:element
+                        maxOccurs="unbounded"
+                        minOccurs="1"
+                        name="item"
+                        type="xsd1:Paciente"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="historialClinico">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="consultorio" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="medico" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="fechaConsulta" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="observaciones" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="piso" type="xsd:string"/>
+                    <xsd:element
+                        maxOccurs="1"
+                        minOccurs="1"
+                        name="areaEspecialidad"
+                        type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="arregloHistorialClinico">
+                <xsd:sequence>
+                    <xsd:element
+                        maxOccurs="unbounded"
+                        minOccurs="1"
+                        name="item2"
+                        type="xsd1:historialClinico"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="obteneristorialClinicoMessageResponse">
+        <wsdl:part name="respuesta" type="xsd1:arregloHistorialClinico"/>
+    </wsdl:message>
+    <wsdl:message name="obteneristorialClinicoMessageRequest">
+        <wsdl:part name="numExpediente" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:portType name="obteneristorialClinicoPortType">
+        <wsdl:operation name="obteneristorialClinico">
+            <wsdl:input message="tns:obteneristorialClinicoMessageRequest"/>
+            <wsdl:output message="tns:obteneristorialClinicoMessageResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding
+        name="obteneristorialClinicoBinding"
+        type="tns:obteneristorialClinicoPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="obteneristorialClinico">
+            <soap:operation
+                soapAction="capeconnect:obteneristorialClinico:obteneristorialClinicoPortType#obteneristorialClinico"/>
+            <wsdl:input>
+                <soap:body  use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body  use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="obteneristorialClinico">
+        <wsdl:port
+            binding="tns:obteneristorialClinicoBinding"
+            name="obteneristorialClinicoPort">
+            <soap:address location="http://localhost:8000/ccx/obteneristorialClinico"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

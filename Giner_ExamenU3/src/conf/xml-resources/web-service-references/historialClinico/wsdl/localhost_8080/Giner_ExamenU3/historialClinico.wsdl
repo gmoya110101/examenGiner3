@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.0 (wsit240-7e98ff4; 2017-08-03T21:19:54+0200) JAXWS-RI/2.3.0 JAXWS-API/2.3.0 JAXB-RI/2.3.0 JAXB-API/2.3.0 svn-revision#unknown. --><wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.itorizaba.com/historialClinico.wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://www.itorizaba.com/historialClinico.xsd1" name="historialClinico" targetNamespace="http://www.itorizaba.com/historialClinico.wsdl">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Created using Cape Clear Studio SOA Editor - http://www.capeclear.com</wsdl:documentation>
+    <wsdl:types>
+        <xsd:schema xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://www.itorizaba.com/historialClinico.xsd1" targetNamespace="http://www.itorizaba.com/historialClinico.xsd1">
+            <xsd:complexType name="visitas">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="fechaConsulta" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="observaciones" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="arregloVisita">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="1" name="item" type="xsd1:visitas"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="paciente">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="nombre" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="apellido" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="numExpediente" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="medico" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="areaEspecialidad" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="consultorio" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="piso" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="visita" type="xsd1:arregloVisita"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="historialClinicoMessageResponse">
+        <wsdl:part name="respuesta" type="xsd1:paciente"/>
+    </wsdl:message>
+    <wsdl:message name="historialClinicoMessageRequest">
+        <wsdl:part name="numExpediente" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:portType name="historialClinicoPortType">
+        <wsdl:operation name="historialClinicoOperation">
+            <wsdl:input message="tns:historialClinicoMessageRequest"/>
+            <wsdl:output message="tns:historialClinicoMessageResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="historialClinicoBinding" type="tns:historialClinicoPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="historialClinicoOperation">
+            <soap:operation soapAction="capeconnect:historialClinico:historialClinicoPortType#historialClinicoOperation"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="historialClinico">
+        <wsdl:port binding="tns:historialClinicoBinding" name="historialClinicoPort">
+            <soap:address location="http://localhost:8080/Giner_ExamenU3/historialClinico"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

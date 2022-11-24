@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+    name="obtenerHistorial"
+    targetNamespace="http://www.itorizaba.com/obtenerHistorial.wsdl"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:tns="http://www.itorizaba.com/obtenerHistorial.wsdl"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsd1="http://www.itorizaba.com/obtenerHistorial.xsd1">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Created using Cape Clear Studio SOA Editor - http://www.capeclear.com</wsdl:documentation>
+    <wsdl:types>
+        <xsd:schema
+            targetNamespace="http://www.itorizaba.com/obtenerHistorial.xsd1"
+            xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:xsd1="http://www.itorizaba.com/obtenerHistorial.xsd1">
+            <xsd:complexType name="Expediente">
+                <xsd:sequence>
+                    <xsd:element
+                        maxOccurs="unbounded"
+                        minOccurs="1"
+                        name="numExpediente"
+                        type="xsd:string"/>
+                    <xsd:element
+                        maxOccurs="unbounded"
+                        minOccurs="1"
+                        name="nombre"
+                        type="xsd:string"/>
+                    <xsd:element
+                        maxOccurs="unbounded"
+                        minOccurs="1"
+                        name="apellidos"
+                        type="xsd:string"/>
+                    <xsd:element
+                        maxOccurs="unbounded"
+                        minOccurs="1"
+                        name="direccion"
+                        type="xsd:string"/>
+                    <xsd:element
+                        maxOccurs="unbounded"
+                        minOccurs="1"
+                        name="telefono"
+                        type="xsd:string"/>
+                    <xsd:element
+                        maxOccurs="unbounded"
+                        minOccurs="1"
+                        name="ciudad"
+                        type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="obtenerHistorialMessageResponse">   </wsdl:message>
+    <wsdl:message name="obtenerHistorialMessageRequest">
+        <wsdl:part name="resultado" type="xsd1:Expediente"/>
+    </wsdl:message>
+    <wsdl:portType name="obtenerHistorialPortType">
+        <wsdl:operation name="obtenerHistorial">
+            <wsdl:input message="tns:obtenerHistorialMessageRequest"/>
+            <wsdl:output message="tns:obtenerHistorialMessageResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="obtenerHistorialBinding" type="tns:obtenerHistorialPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="obtenerHistorial">
+            <soap:operation
+                soapAction="capeconnect:obtenerHistorial:obtenerHistorialPortType#obtenerHistorial"/>
+            <wsdl:input>
+                <soap:body  use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body  use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="obtenerHistorial">
+        <wsdl:port binding="tns:obtenerHistorialBinding" name="obtenerHistorialPort">
+            <soap:address location="http://localhost:8000/ccx/obtenerHistorial"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

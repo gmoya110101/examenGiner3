@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+        *** GENERATED FROM jax-ws.xml - DO NOT EDIT !                             ***
+        *** TO MODIFY wsimport options USE Web Service node -> Edit WS Attributes ***
+        *** TO CHANGE TARGETS GENERATED TO jaxws-build.xml COPY THOSE             ***
+        *** TARGETS TO ../build.xml AND MODIFY THAT FILE INSTEAD                  ***
+
+        --><project xmlns:xalan="http://xml.apache.org/xslt" xmlns:webproject2="http://www.netbeans.org/ns/web-project/2" xmlns:jaxws="http://www.netbeans.org/ns/jax-ws/1">
+    <!--
+                ===================
+                JAX-WS WSGEN SECTION
+                ===================
+            -->
+    <!--
+                ===================
+                JAX-WS WSIMPORT SECTION
+                ===================
+            -->
+    <target name="wsimport-init" depends="init">
+        <fail if="${wsimport.bad.version}" message="WsImport ant task defined in the classpath ${j2ee.platform.wsimport.classpath} has a serious bug. See http://wiki.netbeans.org/MetroIssue for details."/>
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <property name="j2ee.platform.wsimport.classpath" value="${libs.jaxws21.classpath}"/>
+        <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+            <classpath path="${java.home}/../lib/tools.jar:${j2ee.platform.wsimport.classpath}:${javac.classpath}"/>
+        </taskdef>
+        <condition property="conf-dir" value="${conf.dir}/" else="">
+            <isset property="conf.dir"/>
+        </condition>
+    </target>
+    <target name="wsimport-client-paciente" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/paciente"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/paciente" destdir="${build.generated.dir}/jax-wsCache/paciente" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/paciente/wsdl/localhost_8080/Giner_ExamenU3/paciente.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Giner_ExamenU3/paciente?WSDL" xnocompile="true" xendorsed="true" package="www.cliente.paciente">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/paciente/wsdl/localhost_8080/Giner_ExamenU3/paciente.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/paciente"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/paciente">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-paciente" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/www/cliente/paciente"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/paciente"/>
+    </target>
+    <target name="wsimport-client-historialClinico" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/historialClinico"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/historialClinico" destdir="${build.generated.dir}/jax-wsCache/historialClinico" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/historialClinico/wsdl/localhost_8080/Giner_ExamenU3/historialClinico.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/Giner_ExamenU3/historialClinico?WSDL" xnocompile="true" xendorsed="true" package="www.cliente.historialclinicopaciente">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/historialClinico/wsdl/localhost_8080/Giner_ExamenU3/historialClinico.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/historialClinico"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/historialClinico">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-historialClinico" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/www/cliente/historialclinicopaciente"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/historialClinico"/>
+    </target>
+    <target name="wsimport-service-paciente" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/service/paciente"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/service/paciente" destdir="${build.generated.dir}/jax-wsCache/service/paciente" wsdl="${basedir}/${conf-dir}xml-resources/web-services/paciente/wsdl/paciente.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-services/paciente/wsdl/paciente.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/service/paciente"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/service/paciente">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy todir="${build.web.dir}/WEB-INF/wsdl/paciente">
+            <fileset dir="${basedir}/${conf-dir}xml-resources/web-services/paciente/wsdl/"/>
+        </copy>
+    </target>
+    <target name="wsimport-service-clean-paciente" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/itorizaba/paciente"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/service/paciente"/>
+    </target>
+    <target name="wsimport-service-historialClinicopaciente" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/service/historialClinicopaciente"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/service/historialClinicopaciente" destdir="${build.generated.dir}/jax-wsCache/service/historialClinicopaciente" wsdl="${basedir}/${conf-dir}xml-resources/web-services/historialClinicopaciente/wsdl/obtenerhistorialclinico.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-services/historialClinicopaciente/wsdl/obtenerhistorialclinico.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/service/historialClinicopaciente"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/service/historialClinicopaciente">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy todir="${build.web.dir}/WEB-INF/wsdl/historialClinicopaciente">
+            <fileset dir="${basedir}/${conf-dir}xml-resources/web-services/historialClinicopaciente/wsdl/"/>
+        </copy>
+    </target>
+    <target name="wsimport-service-clean-historialClinicopaciente" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/itorizaba/historialclinico"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/service/historialClinicopaciente"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-paciente, wsimport-client-historialClinico"/>
+    <target name="wsimport-service-generate" depends="wsimport-service-paciente, wsimport-service-historialClinicopaciente"/>
+</project>
